@@ -16,6 +16,7 @@ class RememberMeApp extends StatelessWidget {
   ThemeData buildThemeData() {
     return ThemeData(
       primaryColor: Colors.red[800],
+      
     );
   }
 }
