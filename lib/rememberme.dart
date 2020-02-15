@@ -4,6 +4,7 @@ import 'package:remember_me_app/pages/archived_page/archived_page.dart';
 import 'package:remember_me_app/pages/home_page/home_page.dart';
 import 'package:remember_me_app/pages/liked_page/liked_page.dart';
 import 'package:remember_me_app/pages/saved_page/saved_page.dart';
+import 'package:remember_me_app/utills/theme.dart';
 
 class RememberMeLandingPage extends StatefulWidget {
   @override
@@ -24,6 +25,7 @@ class _RememberMeLandingPageState extends State<RememberMeLandingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: appBGcolor,
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedLabelStyle: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),

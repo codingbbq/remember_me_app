@@ -1,3 +1,4 @@
 import 'package:flutter/material.dart';
 
-const MaterialColor appBGcolor = Colors.grey;
+const Color appBGcolor = Color(0xFFf0f1f3);
+const Color homeBGcolor = Color(0xFFbe3030);
