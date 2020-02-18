@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:remember_me_app/components/reviewCard.dart';
+import 'package:remember_me_app/utills/theme.dart';
 
 class ItemsForReview extends StatelessWidget {
   @override
@@ -12,9 +14,7 @@ class ItemsForReview extends StatelessWidget {
               InkWell(
                 child: Text(
                   "Items for review",
-                  style: TextStyle(
-                    fontSize: 20.0
-                  ),
+                  style: titleStyle
                 ),
                 onTap: (){
                   print('Items for review');
@@ -24,9 +24,7 @@ class ItemsForReview extends StatelessWidget {
               InkWell(
                 child: Text(
                   "View All",
-                  style: TextStyle(
-                    fontSize: 20.0
-                  ),
+                  style: linkStyle
                 ),
                 onTap: (){
                   print('View all');
@@ -42,27 +40,7 @@ class ItemsForReview extends StatelessWidget {
             child: Container(
               child: Row(
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 20.0),
-                    child: Placeholder(
-                      fallbackHeight: 200,
-                      fallbackWidth: MediaQuery.of(context).size.width * 0.80,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 20.0),
-                    child: Placeholder(
-                      fallbackHeight: 200,
-                      fallbackWidth: MediaQuery.of(context).size.width * 0.80,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, right: 20.0),
-                    child: Placeholder(
-                      fallbackHeight: 200,
-                      fallbackWidth: MediaQuery.of(context).size.width * 0.80,
-                    ),
-                  ),
+                  ReviewCard()
                 ],
               ),
             ),
