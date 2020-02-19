@@ -11,22 +11,30 @@ class HomePage extends StatelessWidget {
     return CustomPaint(
       painter: CustomBGPainter(bgColor: homeBGcolor, curveHeight: 150),
       child: Container(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 30.0,
-            ),
-            Head(),
-            SizedBox(
-              height: 10.0,
-            ),
-            SearchBar(),
-            SizedBox(
-              height: 15.0,
-            ),
-            ItemsForReview(),
-          ],
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 30.0,
+              ),
+              Head(),
+              SizedBox(
+                height: 10.0,
+              ),
+              SearchBar(),
+              Expanded(
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  children: <Widget>[
+                    ItemsForReview(),
+                    SizedBox(
+                      height: 15.0,
+                    ),
+                    ItemsForReview(),
+                  ],
+                ),
+              )
+            ],
         ),
       ),
     );

@@ -7,6 +7,7 @@ class ItemsForReview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,6 +41,9 @@ class ItemsForReview extends StatelessWidget {
             child: Container(
               child: Row(
                 children: <Widget>[
+                  ReviewCard(),
+                  ReviewCard(),
+                  ReviewCard(),
                   ReviewCard()
                 ],
               ),
