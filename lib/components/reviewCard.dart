@@ -13,7 +13,7 @@ class ReviewCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -59,7 +59,7 @@ class ReviewCard extends StatelessWidget {
                   children: <Widget>[
                     FlatButton.icon(
                       onPressed: (){}, 
-                      icon: Icon(Icons.thumb_up), 
+                      icon: Icon(Icons.favorite), 
                       label: Text("Like")
                     ),
 

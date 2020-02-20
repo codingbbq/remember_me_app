@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remember_me_app/components/custom_bg.dart';
 import 'package:remember_me_app/pages/home_page/elements/head.dart';
 import 'package:remember_me_app/pages/home_page/elements/itemsforreview.dart';
+import 'package:remember_me_app/pages/home_page/elements/longpendingitems.dart';
 import 'package:remember_me_app/pages/home_page/elements/searchbar.dart';
 import 'package:remember_me_app/utills/theme.dart';
 
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
                     SizedBox(
                       height: 15.0,
                     ),
-                    ItemsForReview(),
+                    LongPendingItems(),
                   ],
                 ),
               )
