@@ -42,12 +42,12 @@ class _RememberMeLandingPageState extends State<RememberMeLandingPage> {
                   ),
         
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.save),
+                    icon: Icon(Icons.bookmark),
                     title: Text("Saved"),
                   ),
         
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.thumb_up),
+                    icon: Icon(Icons.favorite),
                     title: Text("Liked"),
                   ),
         
