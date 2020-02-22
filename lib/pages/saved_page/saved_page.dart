@@ -12,7 +12,26 @@ class _SavedPageState extends State<SavedPage> {
   @override
   Widget build(BuildContext context) {
 
-    PageController controller = PageController();
+    int _currentIndex = 0;
+
+    PageController controller = PageController(
+      initialPage: 0
+    );
+
+    onLinkSelected(int index) {
+      setState(() {
+        _currentIndex = index;
+      });
+      if(controller.hasClients){
+        controller.animateToPage(
+          _currentIndex,
+          duration: Duration(
+            milliseconds: 500
+          ),
+          curve: Curves.easeInOutCubic
+        );
+      }
+    }
 
     return SafeArea(
       child: CustomPaint(
@@ -35,9 +54,7 @@ class _SavedPageState extends State<SavedPage> {
                           "All Items",
                           style: hrzLinkStyle,
                         ),
-                        onTap: (){
-                          print("Tapped on all videos");
-                        },
+                        onTap: () => onLinkSelected(0)
                       ),
                     ),
 
@@ -48,9 +65,7 @@ class _SavedPageState extends State<SavedPage> {
                           "Videos",
                           style: hrzLinkStyle,
                         ),
-                        onTap: (){
-                          print("Tapped on Videos");
-                        },
+                        onTap: () => onLinkSelected(1)
                       ),
                     ),
 
@@ -61,9 +76,7 @@ class _SavedPageState extends State<SavedPage> {
                           "Articles",
                           style: hrzLinkStyle,
                         ),
-                        onTap: (){
-                          print("Tapped on articles");
-                        },
+                        onTap: () => onLinkSelected(2)
                       ),
                     ),
 
@@ -74,9 +87,7 @@ class _SavedPageState extends State<SavedPage> {
                           "Inspiration",
                           style: hrzLinkStyle,
                         ),
-                        onTap: (){
-                          print("Tapped on Inspiration");
-                        },
+                        onTap: () => onLinkSelected(3)
                       ),
                     ),
 
@@ -87,9 +98,7 @@ class _SavedPageState extends State<SavedPage> {
                           "Motivation",
                           style: hrzLinkStyle,
                         ),
-                        onTap: (){
-                          print("Tapped on Motication");
-                        },
+                        onTap: () => onLinkSelected(4)
                       ),
                     )
                   ],
@@ -111,7 +120,7 @@ class _SavedPageState extends State<SavedPage> {
                   ],
                   controller: controller,
                   onPageChanged: (num){
-                    print(num);
+                    // print(num);
                   },
                 ),
               )
