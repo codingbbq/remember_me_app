@@ -3,8 +3,31 @@ import 'package:remember_me_app/components/reviewCard.dart';
 import 'package:remember_me_app/utills/theme.dart';
 
 class CustomPage extends StatelessWidget {
+
+  final String page;
+
+  CustomPage({
+    this.page
+  });
+
   @override
   Widget build(BuildContext context) {
+
+    String itemsShowing = "";
+
+    switch(page) {
+      case "AllItems":
+        itemsShowing = "Showing 52 items".toUpperCase();
+        break;
+
+      case "Videos":
+        itemsShowing = "Showing 10 items".toUpperCase();
+        break;
+
+      default:
+        itemsShowing = "Showing a lot of items".toUpperCase();
+    }
+
     return Container(
       padding: EdgeInsets.only(left: 15.0, right: 10.0),
       child: Column(
@@ -13,12 +36,11 @@ class CustomPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Text(
-                "Showing 52 items".toUpperCase(),
+                itemsShowing,
                 style: hrzTitleStyle,
               ),
               FlatButton.icon(
                 onPressed: (){
-
                 }, 
                 icon: Icon(Icons.filter_list), 
                 label: Text(

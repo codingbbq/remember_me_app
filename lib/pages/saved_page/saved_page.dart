@@ -9,21 +9,32 @@ class SavedPage extends StatefulWidget {
 }
 
 class _SavedPageState extends State<SavedPage> {
+  
+
+  int _currentIndex = 0;
+
+  @override
+  void initState(){
+    super.initState();
+    _currentIndex = 0;
+  }
+  
   @override
   Widget build(BuildContext context) {
 
-    int _currentIndex = 0;
-
-    PageController controller = PageController(
+    PageController _pageViewcontroller = PageController(
       initialPage: 0
     );
+
+    ScrollController _scrollViewController = ScrollController();
 
     onLinkSelected(int index) {
       setState(() {
         _currentIndex = index;
       });
-      if(controller.hasClients){
-        controller.animateToPage(
+      print(_currentIndex.toString());
+      if(_pageViewcontroller.hasClients){
+        _pageViewcontroller.animateToPage(
           _currentIndex,
           duration: Duration(
             milliseconds: 500
@@ -45,6 +56,7 @@ class _SavedPageState extends State<SavedPage> {
               // Horizontal links
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                controller: _scrollViewController,
                 child: Row(
                   children: <Widget>[
                     Padding(
@@ -52,7 +64,7 @@ class _SavedPageState extends State<SavedPage> {
                       child: InkWell(
                         child: Text(
                           "All Items",
-                          style: hrzLinkStyle,
+                          style: (_currentIndex == 0) ? hrzSelectedStyle : hrzLinkStyle,
                         ),
                         onTap: () => onLinkSelected(0)
                       ),
@@ -63,7 +75,7 @@ class _SavedPageState extends State<SavedPage> {
                       child: InkWell(
                         child: Text(
                           "Videos",
-                          style: hrzLinkStyle,
+                          style:  (_currentIndex == 1) ? hrzSelectedStyle : hrzLinkStyle,
                         ),
                         onTap: () => onLinkSelected(1)
                       ),
@@ -74,7 +86,7 @@ class _SavedPageState extends State<SavedPage> {
                       child: InkWell(
                         child: Text(
                           "Articles",
-                          style: hrzLinkStyle,
+                          style:  (_currentIndex == 2) ? hrzSelectedStyle : hrzLinkStyle,
                         ),
                         onTap: () => onLinkSelected(2)
                       ),
@@ -85,7 +97,7 @@ class _SavedPageState extends State<SavedPage> {
                       child: InkWell(
                         child: Text(
                           "Inspiration",
-                          style: hrzLinkStyle,
+                          style:  (_currentIndex == 3) ? hrzSelectedStyle : hrzLinkStyle,
                         ),
                         onTap: () => onLinkSelected(3)
                       ),
@@ -96,7 +108,7 @@ class _SavedPageState extends State<SavedPage> {
                       child: InkWell(
                         child: Text(
                           "Motivation",
-                          style: hrzLinkStyle,
+                          style:  (_currentIndex == 4) ? hrzSelectedStyle : hrzLinkStyle,
                         ),
                         onTap: () => onLinkSelected(4)
                       ),
@@ -109,20 +121,62 @@ class _SavedPageState extends State<SavedPage> {
                 child: PageView(
                   scrollDirection: Axis.horizontal,
                   children: <Widget>[
-                    CustomPage(),
-
+                    CustomPage(page: "AllItems"),
+                    CustomPage(page: "Videos"),
                     Container(
-                      color: Colors.blue,
-                      child: Text("All items"),
+                      color: Colors.green.shade50,
+                      child: Center(
+                        child: Text(
+                          "Content related to Articles",
+                          style: TextStyle(
+                            color: Colors.green.shade800,
+                            fontSize: 30.0
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.red.shade50,
+                      child: Center(
+                        child: Text(
+                          "Inspirational Content",
+                          style: TextStyle(
+                            color: Colors.red.shade800,
+                            fontSize: 30.0
+                          ),
+                        ),
+                      ),
                     ),
 
-                    
+                    Container(
+                      color: Colors.blue.shade50,
+                      child: Center(
+                        child: Text(
+                          "Motivational Content",
+                          style: TextStyle(
+                            color: Colors.blue.shade800,
+                            fontSize: 30.0
+                          ),
+                        ),
+                      ),
+                    ) 
+
                   ],
-                  controller: controller,
-                  onPageChanged: (num){
-                    // print(num);
+                  controller: _pageViewcontroller,
+                  onPageChanged: (int idx){
+                    // When the user swips the page to left/right, we also want to update the styles of the links.
+                    setState(() {
+                      _currentIndex = idx;
+                    });
+                     _scrollViewController.jumpTo(0);
+                    if(idx >= 3){
+                      _scrollViewController.jumpTo(180);
+                    }
+
+                    
                   },
                 ),
+                
               )
             ],
           )
